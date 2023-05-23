@@ -17,7 +17,7 @@ class Program
 
         //Получение приватного метода из dll
         var library = typeof(Library);
-        MethodInfo method = typeof(Library).GetMethod("GetWordCounts", BindingFlags.NonPublic | BindingFlags.Static);
+        MethodInfo method = library.GetMethod("GetWordCounts", BindingFlags.NonPublic | BindingFlags.Static);
         Dictionary<string, int> wordCounts = (Dictionary<string, int>)method.Invoke(library, new object[] {filePath});
 
         //Проверяем содержит ли словарь какие-либо элементы, если да - создаем файл "output.txt", перечисляя слова в порядке убывания их кол-ва
